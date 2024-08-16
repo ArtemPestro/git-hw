@@ -15,6 +15,10 @@
 
 ### Решение 1
 
+![скрин_1](https://github.com/ArtemPestro/git-hw/blob/devops-cicd/img/cicd-1.1.png)
+
+![скрин_2](https://github.com/ArtemPestro/git-hw/blob/devops-cicd/img/cicd-1.2.png)
+
 ---
 
 ### Задание 2
@@ -27,6 +31,29 @@
 В качестве ответа пришлите скриншоты с настройками проекта и результатами выполнения сборки.
 
 ### Решение 2
+
+[Вывод Jenkins об успешной сборке](https://github.com/ArtemPestro/git-hw/blob/devops-cicd/img/cicd-2.png)
+
+Pipeline-код Jenkins:
+```
+pipeline {
+ agent any
+ stages {
+  stage('Git') {
+   steps {git 'https://github.com/ArtemPestro/ci-cd'}
+  }
+  stage('Test') {
+   steps {sh 'go test .'}
+  }
+  stage('Build') {
+   steps {sh 'docker build -t artempestro/ci-cd-homework:$BUILD_NUMBER .'}
+  }
+  stage('Push') {
+   steps {sh 'docker login -u artempestro -p nArtUbuntu2021 && docker push artempestro/ci-cd-homework:$BUILD_NUMBER && docker logout'}
+  }
+ }
+}
+```
 
 ---
 
