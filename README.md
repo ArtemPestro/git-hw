@@ -17,7 +17,7 @@
 
 ![скрин_1](https://github.com/ArtemPestro/git-hw/blob/devops-cicd/img/cicd-1.1.png)
 
-![скрин_2](https://github.com/ArtemPestro/git-hw/blob/devops-cicd/img/cicd-1.3.png)
+![скрин_3](https://github.com/ArtemPestro/git-hw/blob/devops-cicd/img/cicd-1.3.png)
 
 ---
 
