@@ -32,7 +32,7 @@
 
 ### Решение 2
 
-[Вывод Jenkins об успешной сборке](https://github.com/ArtemPestro/git-hw/blob/devops-cicd/img/cicd-2.png)
+![Вывод Jenkins об успешной сборке](https://github.com/ArtemPestro/git-hw/blob/devops-cicd/img/cicd-2.png)
 
 Pipeline-код Jenkins:
 ```
@@ -49,7 +49,7 @@ pipeline {
    steps {sh 'docker build -t artempestro/ci-cd-homework:$BUILD_NUMBER .'}
   }
   stage('Push') {
-   steps {sh 'docker login -u artempestro -p nArtUbuntu2021 && docker push artempestro/ci-cd-homework:$BUILD_NUMBER && docker logout'}
+   steps {sh 'docker login -u artempestro -p && docker push artempestro/ci-cd-homework:$BUILD_NUMBER && docker logout'}
   }
  }
 }
@@ -70,6 +70,34 @@ pipeline {
 
 ### Решение 3
 
+Pipeline:
+
+```
+pipeline {
+ agent any
+ stages {
+  stage('Git') {
+   steps {git 'https://github.com/ArtemPestro/ci-cd'}
+  }
+  stage('Test') {
+   steps {
+    sh 'go test .'
+   }
+  }
+  stage('Build') {
+   steps {
+    sh 'go build -a -installsuffix nocgo'
+   }
+  }
+  stage('Push') {
+   steps {
+    sh 'curl -u admin: http://127.0.0.1:8081/repository/ci-cd-homework-3/ --upload-file ./sdvps-materials'   }
+  }
+ }
+}
+```
+
+![скрин-3.1](https://github.com/ArtemPestro/git-hw/blob/devops-cicd/img/cicd-3.png)
 
 ---
 ## Дополнительные задания* (со звёздочкой)
@@ -85,5 +113,3 @@ pipeline {
 Подсказка: используйте переменную BUILD_NUMBER.
 
 В качестве ответа пришлите скриншоты с настройками проекта и результатами выполнения сборки.
-
-### Решение 4
