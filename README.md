@@ -35,7 +35,9 @@
 
 ### Решение 1
 
+![настройки ВМ](https://github.com/ArtemPestro/git-hw/blob/mon-overview-hw/img/mon-overview-1.1.png)
 
+![дашборд яндекс-облака](https://github.com/ArtemPestro/git-hw/blob/mon-overview-hw/img/mon-overview-1.2.png)
 
 ---
 
@@ -44,4 +46,8 @@
 С помощью Yandex Monitoring сделайте 2 алерта на загрузку процессора: WARN и ALARM. Создайте уведомление по e-mail.
 
 ### Решение 2
+
+![настройки системы оповещения](https://github.com/ArtemPestro/git-hw/blob/mon-overview-hw/img/mon-overview-2.png)
+
+---
 
