@@ -26,7 +26,7 @@ backend webservers
         server s1 127.0.0.1:8998 check
         server s2 127.0.0.1:9999 check
 ```
-![]()
+![screenshot](https://github.com/ArtemPestro/git-hw/blob/haproxy/img/haproxy-1.png)
 
 ---
 
@@ -38,4 +38,25 @@ backend webservers
 
 ### Решение 2
 
+Конфигурация HAProxy:
 
+```
+frontend example
+        mode http
+        bind :8088
+        acl ACL_example.local hdr(host) -i example.local www.example.local
+        #default_backend webservers
+        use_backend webservers if ACL_example.local
+
+backend webservers
+        mode http
+        balance roundrobin
+        option tcplog
+        option forwardfor
+        #stats realm Haproxy\ statistic
+        server s1 127.0.0.1:8998 check weight 2
+        server s2 127.0.0.1:9999 check weight 3
+        server s3 127.0.0.1:1337 check weight 4
+```
+
+![screenshot](https://github.com/ArtemPestro/git-hw/blob/haproxy/img/haproxy-2.png)
