@@ -41,4 +41,9 @@ else
 fi
 ```
 
+
+```
+cat /home/artu1/.log/backup.log
+```
+
 ![результат выполнения](img/rsync-2.png)
