@@ -1,62 +1,44 @@
-# Домашнее задание к занятию "Кластеризация и балансировка нагрузки" - Артем Пестроухов
+# Домашнее задание к занятию "Резервное копирование" - Артем Пестроухов
 
 ### Задание 1
-- Запустите два simple python сервера на своей виртуальной машине на разных портах
-- Установите и настройте HAProxy, воспользуйтесь материалами к лекции по [ссылке](2/)
-- Настройте балансировку Round-robin на 4 уровне.
-- На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy.
+- Составьте команду rsync, которая позволяет создавать зеркальную копию домашней директории пользователя в директорию `/tmp/backup`
+- Необходимо исключить из синхронизации все директории, начинающиеся с точки (скрытые)
+- Необходимо сделать так, чтобы rsync подсчитывал хэш-суммы для всех файлов, даже если их время модификации и размер идентичны в источнике и приемнике.
+- На проверку направить скриншот с командой и результатом ее выполнения
 
 ### Решение 1
 
-Конфигурация HAProxy:
-
-```
-frontend example
-        mode http
-        option tcplog
-        bind :8088
-        default_backend webservers
-        use_backend webservers
-
-backend webservers
-        mode http
-        balance roundrobin
-        option tcplog
-        #stats realm Haproxy\ statistic
-        server s1 127.0.0.1:8998 check
-        server s2 127.0.0.1:9999 check
-```
-![screenshot](https://github.com/ArtemPestro/git-hw/blob/haproxy/img/haproxy-1.png)
+![команда и результат выполнения](img/rsync-1.png)
 
 ---
 
 ### Задание 2
-- Запустите три simple python сервера на своей виртуальной машине на разных портах
-- Настройте балансировку Weighted Round Robin на 7 уровне, чтобы первый сервер имел вес 2, второй - 3, а третий - 4
-- HAproxy должен балансировать только тот http-трафик, который адресован домену example.local
-- На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy c использованием домена example.local и без него.
+- Написать скрипт и настроить задачу на регулярное резервное копирование домашней директории пользователя с помощью rsync и cron.
+- Резервная копия должна быть полностью зеркальной
+- Резервная копия должна создаваться раз в день, в системном логе должна появляться запись об успешном или неуспешном выполнении операции
+- Резервная копия размещается локально, в директории `/tmp/backup`
+- На проверку направить файл crontab и скриншот с результатом работы утилиты.
 
 ### Решение 2
 
-Конфигурация HAProxy:
+Выдержка из crontab:
 
 ```
-frontend example
-        mode http
-        bind :8088
-        acl ACL_example.local hdr(host) -i example.local www.example.local
-        #default_backend webservers
-        use_backend webservers if ACL_example.local
-
-backend webservers
-        mode http
-        balance roundrobin
-        option tcplog
-        option forwardfor
-        #stats realm Haproxy\ statistic
-        server s1 127.0.0.1:8998 check weight 2
-        server s2 127.0.0.1:9999 check weight 3
-        server s3 127.0.0.1:1337 check weight 4
+0 6-22 * * * /home/artu1/backup_home #команда запускается ежедневно, кроме ночного времени
 ```
 
-![screenshot](https://github.com/ArtemPestro/git-hw/blob/haproxy/img/haproxy-2.png)
+Написанный скрипт:
+
+```
+#!/bin/bash
+
+rsync -av --delete /home/artu1/ /tmp/backup >> /home/artu1/.log/backup.log 2>&1 #поставлен флаг verbose
+                                                                                #для отображения изменённых
+if [ "$?" -eq 0 ]; then                                                         #за день файлов в логе
+	logger "Backup success"
+else
+	logger "Backup fail"
+fi
+```
+
+![результат выполнения](img/rsync-2.png)
