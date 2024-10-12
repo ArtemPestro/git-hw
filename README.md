@@ -32,6 +32,10 @@
 
 *Приведите скриншот интерфейса Kibana, на котором видны логи Nginx.*
 
+#### Решение 3
+
+![logstash_discovered](https://github.com/ArtemPestro/git-hw/blob/elastic-logstash-kibana/img/elk-3.png)
+
 ---
 
 ### Задание 4. Filebeat. 
@@ -39,6 +43,10 @@
 Установите и запустите Filebeat. Переключите поставку логов Nginx с Logstash на Filebeat. 
 
 *Приведите скриншот интерфейса Kibana, на котором видны логи Nginx, которые были отправлены через Filebeat.*
+
+#### Решение 4
+
+![filebeat_discovered](https://github.com/ArtemPestro/git-hw/blob/elastic-logstash-kibana/img/elk-4.png)
 
 
 ## Дополнительные задания (со звёздочкой*)
