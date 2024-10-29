@@ -1,60 +1,70 @@
-# Домашнее задание к занятию "ELK" - Артем Пестроухов
+# Домашнее задание к занятию "Уязвимости и атаки на информационные системы" - Артем Пестроухов
 
-### Задание 1. Elasticsearch 
 
-Установите и запустите Elasticsearch, после чего поменяйте параметр cluster_name на случайный. 
+### Задание 1
 
-*Приведите скриншот команды 'curl -X GET 'localhost:9200/_cluster/health?pretty', сделанной на сервере с установленным Elasticsearch. Где будет виден нестандартный cluster_name*.
+Скачайте и установите виртуальную машину Metasploitable: https://sourceforge.net/projects/metasploitable/.
 
+Это типовая ОС для экспериментов в области информационной безопасности, с которой следует начать при анализе уязвимостей.
+
+Просканируйте эту виртуальную машину, используя **nmap**.
+
+Попробуйте найти уязвимости, которым подвержена эта виртуальная машина.
+
+Сами уязвимости можно поискать на сайте https://www.exploit-db.com/.
+
+Для этого нужно в поиске ввести название сетевой службы, обнаруженной на атакуемой машине, и выбрать подходящие по версии уязвимости.
+
+Ответьте на следующие вопросы:
+
+- Какие сетевые службы в ней разрешены?
+- Какие уязвимости были вами обнаружены? (список со ссылками: достаточно трёх уязвимостей)
+  
+*Приведите ответ в свободной форме.*  
 
 #### Решение 1
 
-![elasticsearch_health](https://github.com/ArtemPestro/git-hw/blob/elastic-logstash-kibana/img/elk-1.png)
+Сетевые службы:
+``ftp (vsftpd)
+OpenSSH
+telnetd
+Postfix smtpd
+ISC BIND
+Apache HTTPD
+rpcbind
+Samba
+ProFTPD
+Netkit rshd
+rlogind
+GNU Classpath grmiregistry
+Metasploitable root shell
+ProFTPD
+MySQL 5.0.51a
+PostgreSQL 8.3.0
+VNC 3.3
+X11
+UnrealIRCd
+Apache Jserv v. 1.3
+Apache Tomcat/Coyote JSP Engine 1.1
+``
+Найденные уязвимости:
 
----
-
-### Задание 2. Kibana
-
-Установите и запустите Kibana.
-
-*Приведите скриншот интерфейса Kibana на странице http://<ip вашего сервера>:5601/app/dev_tools#/console, где будет выполнен запрос GET /_cluster/health?pretty*.
-
-
-#### Решение 2
-
-![kibana_get](https://github.com/ArtemPestro/git-hw/blob/elastic-logstash-kibana/img/elk-2.png)
-
----
-
-### Задание 3. Logstash
-
-Установите и запустите Logstash и Nginx. С помощью Logstash отправьте access-лог Nginx в Elasticsearch. 
-
-*Приведите скриншот интерфейса Kibana, на котором видны логи Nginx.*
-
-#### Решение 3
-
-![logstash_discovered](https://github.com/ArtemPestro/git-hw/blob/elastic-logstash-kibana/img/elk-3.png)
-
----
-
-### Задание 4. Filebeat. 
-
-Установите и запустите Filebeat. Переключите поставку логов Nginx с Logstash на Filebeat. 
-
-*Приведите скриншот интерфейса Kibana, на котором видны логи Nginx, которые были отправлены через Filebeat.*
-
-#### Решение 4
-
-![filebeat_discovered](https://github.com/ArtemPestro/git-hw/blob/elastic-logstash-kibana/img/elk-4.png)
+https://www.exploit-db.com/exploits/40610 - OpenNMS - Удалённое исполнение кода
+https://www.exploit-db.com/exploits/46813 - PostgreSQL 8.3-9.3 - Исполнение кода в результате копирования из программы
+https://www.exploit-db.com/exploits/31433 - Apache Tomcat Manager - Исполнение привилегированного кода 
+https://www.exploit-db.com/exploits/37598 - VNC Keyboard - Удалённое исполнение кода
 
 
-## Дополнительные задания (со звёздочкой*)
-Эти задания дополнительные, то есть не обязательные к выполнению, и никак не повлияют на получение вами зачёта по этому домашнему заданию. Вы можете их выполнить, если хотите глубже шире разобраться в материале.
 
-### Задание 5*. Доставка данных 
+### Задание 2
 
-Настройте поставку лога в Elasticsearch через Logstash и Filebeat любого другого сервиса , но не Nginx. 
-Для этого лог должен писаться на файловую систему, Logstash должен корректно его распарсить и разложить на поля. 
+Проведите сканирование Metasploitable в режимах SYN, FIN, Xmas, UDP.
 
-*Приведите скриншот интерфейса Kibana, на котором будет виден этот лог и напишите лог какого приложения отправляется.*
+Запишите сеансы сканирования в Wireshark.
+
+Ответьте на следующие вопросы:
+
+- Чем отличаются эти режимы сканирования с точки зрения сетевого трафика?
+- Как отвечает сервер?
+
+*Приведите ответ в свободной форме.*
