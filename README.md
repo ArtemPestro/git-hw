@@ -25,6 +25,7 @@
 #### Решение 1
 
 Сетевые службы:
+
 ``ftp (vsftpd)
 OpenSSH
 telnetd
@@ -47,6 +48,7 @@ UnrealIRCd
 Apache Jserv v. 1.3
 Apache Tomcat/Coyote JSP Engine 1.1
 ``
+
 Найденные уязвимости:
 
 https://www.exploit-db.com/exploits/40610 - OpenNMS - Удалённое исполнение кода
