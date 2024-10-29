@@ -55,7 +55,7 @@ Apache Tomcat/Coyote JSP Engine 1.1
 
 https://www.exploit-db.com/exploits/40610 - OpenNMS - Удалённое исполнение кода
 
-https://www.exploit-db.com/exploits/46813 - PostgreSQL 8.3-9.3 - Исполнение кода в результате копирования из программы
+https://www.exploit-db.com/exploits/46813 - PostgreSQL 8.3-9.3 - Исполнение загружаемого кода
 
 https://www.exploit-db.com/exploits/31433 - Apache Tomcat Manager - Исполнение привилегированного кода 
 
