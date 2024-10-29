@@ -37,7 +37,7 @@ ProFTPD
 Netkit rshd
 rlogind
 GNU Classpath grmiregistry
-Metasploitable root shell
+"Metasploitable root shell"
 ProFTPD
 MySQL 5.0.51a
 PostgreSQL 8.3.0
