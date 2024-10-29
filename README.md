@@ -63,6 +63,8 @@ https://www.exploit-db.com/exploits/37598 - VNC Keyboard - Удалённое и
 
 
 
+
+
 ### Задание 2
 
 Проведите сканирование Metasploitable в режимах SYN, FIN, Xmas, UDP.
