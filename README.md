@@ -83,13 +83,13 @@ https://www.exploit-db.com/exploits/37598 - VNC Keyboard - Удалённое и
   Режим сканирования UDP прозванивает исключительно UDP-порты, при отрицательном ответе
 исследуемый хост присылает ответ ICMP "Port unreachable", при положительном - отвечает
 сервис, работающий на заданном порте. Этот метод работает медленнее всех, но позволяет
-исследовать сервисы, работающие через UDP-протокол. [Сессия скана|https://github.com/ArtemPestro/git-hw/blob/infosec/files/nmap%20udp%20scan.pcapng].
+исследовать сервисы, работающие через UDP-протокол. [Сессия скана](https://github.com/ArtemPestro/git-hw/blob/infosec/files/nmap%20udp%20scan.pcapng).
 
   Режим сканирования SYN отсылает на каждый TCP-порт запрос SYN, в соответствии с которым
-хост Metasploitable отвечает "да/нет". [Запись пакетов сканирования.|https://github.com/ArtemPestro/git-hw/blob/infosec/files/nmap%20syn%20scan.pcapng].
+хост Metasploitable отвечает "да/нет". [Запись пакетов сканирования](https://github.com/ArtemPestro/git-hw/blob/infosec/files/nmap%20syn%20scan.pcapng).
 
   FIN-режим работает аналогично SYN, однако позволяет определить, фильтрует ли трафик 
-со стороны атакуемой машины, или нет. [Сессия сканирования|https://github.com/ArtemPestro/git-hw/blob/infosec/files/nmap%20fin%20scan.pcapng].
+со стороны атакуемой машины, или нет. [Сессия сканирования](https://github.com/ArtemPestro/git-hw/blob/infosec/files/nmap%20fin%20scan.pcapng).
 
   Xmas также относится к TCP-методам сканирования, отправляет RST, ACK пакеты, получает
-от портов ответ в виде FIN, PSH, URG. Работает аналогично и немного быстрее FIN. [Сессия|https://github.com/ArtemPestro/git-hw/blob/infosec/files/nmap%20xmas%20scan.pcapng].
+от портов ответ в виде FIN, PSH, URG. Работает аналогично и немного быстрее FIN. [Сессия](https://github.com/ArtemPestro/git-hw/blob/infosec/files/nmap%20xmas%20scan.pcapng).
