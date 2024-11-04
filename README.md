@@ -16,11 +16,11 @@
 
 Состояние домашней директории до ecryptfs:
 
-[!1](https://github.com/ArtemPestro/git-hw/blob/infosec2/img/infosec2-1.1.png)
+![1](https://github.com/ArtemPestro/git-hw/blob/infosec2/img/infosec2-1.1.png)
 
 Состояние после:
 
-[!2](https://github.com/ArtemPestro/git-hw/blob/infosec2/img/infosec2-1.2.png)
+![2](https://github.com/ArtemPestro/git-hw/blob/infosec2/img/infosec2-1.2.png)
 
 
 
@@ -38,15 +38,15 @@
 
 Проверка реквизита:
 
-[!1](https://github.com/ArtemPestro/git-hw/blob/infosec2/img/infosec2-2.1.png)
+![1](https://github.com/ArtemPestro/git-hw/blob/infosec2/img/infosec2-2.1.png)
 
 Создание нового раздела:
 
-[!2](https://github.com/ArtemPestro/git-hw/blob/infosec2/img/infosec2-2.2.png)
+![2](https://github.com/ArtemPestro/git-hw/blob/infosec2/img/infosec2-2.2.png)
 
 Процесс шифрования раздела:
 
-[!3](https://github.com/ArtemPestro/git-hw/blob/infosec2/img/infosec2-2.3.png)
+![3](https://github.com/ArtemPestro/git-hw/blob/infosec2/img/infosec2-2.3.png)
 
 
 
